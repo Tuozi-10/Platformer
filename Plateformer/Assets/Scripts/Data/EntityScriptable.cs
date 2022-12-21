@@ -8,15 +8,16 @@ namespace Data
     {
        [SerializeField] private EntityDataStruct data;
         
-        [Serializable]
-        public struct EntityDataStruct
-        {
-            public int hp;
-            public int armor;
-            public float speed;
-            public int damages;
-            public string name;
-        }
+       // be careful with types not copied by value, you could end with shared references and modify the actual scriptable value
+       [Serializable]
+       public struct EntityDataStruct
+       {
+           public int hp;
+           public int armor;
+           public float speed;
+           public int damages;
+           public string name;
+       }
 
         public EntityData GetData()
         {
@@ -25,11 +26,12 @@ namespace Data
         
         public class EntityData
         {
-            public EntityDataStruct Data;
+            public EntityDataStruct CurrentData;
+            public EntityDataStruct InitialData { private set; get; }
 
             public EntityData(EntityScriptable dataScriptable)
             {
-                Data = dataScriptable.data;
+                InitialData = CurrentData = dataScriptable.data;
             }
         }
     }
