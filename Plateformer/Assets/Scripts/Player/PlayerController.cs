@@ -32,7 +32,10 @@ namespace Player
 
         private bool m_isLookingLeft = false;
         private Vector3 m_arrowSpawn = new Vector3(0.45f, 0.25f, 0f);
-        
+
+        [SerializeField] private float m_fullLoadShootDuration = 0.6f;
+        [SerializeField] private float m_arrowMinStrength = 15;
+        [SerializeField] private float m_arrowMaxStrength = 40;
         
         private void Awake()
         {
@@ -58,8 +61,8 @@ namespace Player
 
         private void ManageInputs()
         {
-            if (Input.GetKey(KeyCode.A)) Shoot();
-            else if(m_shooting) ShootArrow();
+            if (Input.GetKeyDown(KeyCode.A)) Shoot();
+            else if(Input.GetKeyUp(KeyCode.A) && m_shooting) ShootArrow();
             
             
             if (Input.GetKeyDown(KeyCode.Space))
@@ -89,22 +92,30 @@ namespace Player
         }
 
         #region shoot
+
+        private float m_timeStartShoot;
         
         private void Shoot()
         {
             if (!m_canJump) return;
-            
+            m_timeStartShoot = Time.time;
             m_shooting = true;
             m_playerAnimator.SetBool(Attacking, true);
         }
 
         private void ShootArrow()
         {
+            // calculate loading %
+            float ratioShoot = (Time.time - m_timeStartShoot) / m_fullLoadShootDuration;
+            
+            // calculate min strength + ratio loading
+            float strength = m_arrowMinStrength + (m_arrowMaxStrength - m_arrowMinStrength) * ratioShoot;
+            
             m_shooting = false;
             m_playerAnimator.SetBool(Attacking, false);
             var pos = new Vector2(transform.position.x + ((m_isLookingLeft ? -1 : 1) * m_arrowSpawn.x), transform.position.y + m_arrowSpawn.y);
             var arrow = Instantiate(m_arrow,  pos, Quaternion.identity, null );
-            arrow.GetComponent<Rigidbody2D>().AddForce(!m_isLookingLeft ? Vector2.right *40 : -Vector2.right *40f,ForceMode2D.Impulse );
+            arrow.GetComponent<Rigidbody2D>().AddForce(!m_isLookingLeft ? Vector2.right *strength : -Vector2.right *strength,ForceMode2D.Impulse );
         }
         
         #endregion
