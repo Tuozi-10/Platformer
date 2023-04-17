@@ -113,7 +113,7 @@ TextureImporter:
         width: 33
         height: 36
       alignment: 9
-      pivot: {x: 0.5798296, y: 0.30592123}
+      pivot: {x: 0.5798296, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,7 +134,7 @@ TextureImporter:
         width: 33
         height: 36
       alignment: 9
-      pivot: {x: 0.5694169, y: 0.3377374}
+      pivot: {x: 0.5694169, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -147,36 +147,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Take Hit_2
-      rect:
-        serializedVersion: 2
-        x: 354
-        y: 66
-        width: 7
-        height: 5
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a4b3da13584750f43831289b8f1a1714
-      internalID: -1053239744
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Take Hit_3
       rect:
         serializedVersion: 2
-        x: 358
+        x: 355
         y: 49
         width: 38
         height: 37
       alignment: 9
-      pivot: {x: 0.3854611, y: 0.4071311}
+      pivot: {x: 0.3854611, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -189,36 +168,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Take Hit_4
-      rect:
-        serializedVersion: 2
-        x: 504
-        y: 65
-        width: 5
-        height: 5
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 280824799b1be654a994b44cfeff4c37
-      internalID: -994161066
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Take Hit_5
       rect:
         serializedVersion: 2
-        x: 508
+        x: 503
         y: 49
-        width: 35
+        width: 40
         height: 37
       alignment: 9
-      pivot: {x: 0.43127617, y: 0.35140982}
+      pivot: {x: 0.43127617, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

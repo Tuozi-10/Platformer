@@ -68,6 +68,11 @@ namespace AI
             {
                 ChangeState(States.Dead);
             }
+            else
+            {
+                
+                m_animator.Play("hit");
+            }
         }
         
         public void ChangeState(States newState)

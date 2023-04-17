@@ -1253,7 +1253,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd756716c35474788535895b61c9433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_dataEntity: {fileID: 11400000, guid: 27abd63053f5cf24c8b5f8bd552dc94a, type: 2}
 --- !u!1001 &751926147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3536,6 +3535,18 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3025629635873917127, guid: 3fbc25f3d826b5e448ad07266f8ab4c4, type: 3}
+      propertyPath: m_jumpBuffer
+      value: 0.175
+      objectReference: {fileID: 0}
+    - target: {fileID: 3025629635873917127, guid: 3fbc25f3d826b5e448ad07266f8ab4c4, type: 3}
+      propertyPath: m_speedJumpMax
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3025629635873917127, guid: 3fbc25f3d826b5e448ad07266f8ab4c4, type: 3}
+      propertyPath: m_speedJumpMin
+      value: 13.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3025629635873917127, guid: 3fbc25f3d826b5e448ad07266f8ab4c4, type: 3}
       propertyPath: m_arrowMinStrength
       value: 2
       objectReference: {fileID: 0}
@@ -3604,5 +3615,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gobelin
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5071333522075774757, guid: f68c13f043e74244b82bc868e7e0135e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f68c13f043e74244b82bc868e7e0135e, type: 3}

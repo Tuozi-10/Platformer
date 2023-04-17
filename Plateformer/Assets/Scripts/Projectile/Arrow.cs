@@ -1,4 +1,5 @@
 ﻿using System;
+using AI;
 using UnityEngine;
 
 namespace Projectile
@@ -11,6 +12,9 @@ namespace Projectile
 
         [SerializeField] private Animator m_animator;
 
+        [SerializeField]
+        private int damage = 1;
+        
         private bool m_stopped;
         
         private void Awake()
@@ -33,10 +37,15 @@ namespace Projectile
         private void OnTriggerEnter2D(Collider2D other)
         {
             m_stopped = true;
-            m_rb2D.bodyType = RigidbodyType2D.Static;
+            Destroy(m_rb2D);
             m_boxCollider2D.enabled = false;
             transform.SetParent(other.transform);
             m_animator.enabled = false;
+            if (other.CompareTag("Ennemy"))
+            {
+                other.GetComponent<AbstractAI>().OnHit(damage);
+            }
+            
         }
     }
 }

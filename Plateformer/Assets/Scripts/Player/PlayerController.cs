@@ -11,12 +11,12 @@ namespace Player
         private GameObject m_arrow;
 
         [Header("Movement"), Space, SerializeField]
-        private float m_speedJump = 10;  
-        [ SerializeField] 
-        private float m_speed = 5;  
+        private float m_speedJumpMax = 10;  
+        [ SerializeField] private float m_speedJumpMin = 10;  
+        [ SerializeField] private float m_jumpBuffer = 0.5f;  
         
-        [ SerializeField] 
-        private float m_maxSpeed = 5;
+        [ SerializeField] private float m_speed = 5;
+        [ SerializeField] private float m_maxSpeed = 5;
 
         private SpriteRenderer m_spriteRenderer;
         private Rigidbody2D m_rigidbody;
@@ -63,10 +63,16 @@ namespace Player
         {
             if (Input.GetKeyDown(KeyCode.A)) Shoot();
             else if(Input.GetKeyUp(KeyCode.A) && m_shooting) ShootArrow();
-            
-            
-            if (Input.GetKeyDown(KeyCode.Space))
-                Jump();
+
+
+            if (Input.GetKey(KeyCode.Space))
+            {
+                StartJump();
+            }
+            else
+            {
+                m_jumping = false;
+            }
 
             if (Input.GetKey(KeyCode.RightArrow))
             {
@@ -126,22 +132,38 @@ namespace Player
             m_rigidbody.AddForce(Vector2.right * speed * Time.deltaTime *( m_canJump ? 1f:0.25f), ForceMode2D.Impulse);
         }
 
-        private void Jump()
+        private float m_startJumpLoad;
+        private bool m_jumping;
+        
+        private void StartJump()
         {
             if (m_shooting) return;
-            if (!m_canJump) return;
-            m_canJump = false;
-            m_playerAnimator.SetBool(Jumping, true);
             
-            m_rigidbody.AddForce(new Vector2(0, m_speedJump), ForceMode2D.Impulse);
+            if (Input.GetKeyDown(KeyCode.Space) && m_canJump)
+            {
+                m_rigidbody.AddForce(new Vector2(0, m_speedJumpMin), ForceMode2D.Impulse);
+                m_startJumpLoad = Time.time;
+                m_jumping = true;
+                m_canJump = false;
+            }
+            
+            if (Time.time - m_startJumpLoad < m_jumpBuffer && m_jumping)
+            {        
+                m_playerAnimator.SetBool(Jumping, true);
+                m_rigidbody.AddForce(new Vector2(0, m_speedJumpMax), ForceMode2D.Impulse);
+            }
+            else
+            {
+                m_jumping = false;
+            }
         }
-
 
         private void OnCollisionEnter2D(Collision2D other)
         {
             if (other.transform.CompareTag($"NoJump"))
                 return;
             
+            m_jumping = false;
             m_canJump = true;
             m_playerAnimator.SetBool(Jumping, false);
         }
