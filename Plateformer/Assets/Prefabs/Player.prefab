@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7964805085381976201}
   - component: {fileID: 3025629635873917129}
   - component: {fileID: 3025629635873917126}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -50,14 +50,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_playerAnimator: {fileID: 3025629637023455251}
   m_arrow: {fileID: 3703706128725626221, guid: 5dd50c2d8594bc24ca8c9b5b61d96e11, type: 3}
-  m_speedJumpMax: 10
-  m_speedJumpMin: 10
-  m_jumpBuffer: 0.5
+  m_speedJumpMax: 0.35
+  m_speedJumpMin: 13.5
+  m_jumpBuffer: 0.175
   m_speed: 100
   m_maxSpeed: 5
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
   m_fullLoadShootDuration: 0.6
-  m_arrowMinStrength: 15
+  m_arrowMinStrength: 2
   m_arrowMaxStrength: 40
+  shootingKey: 0
+  intercationKey: 0
 --- !u!114 &7964805085381976201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,7 +138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3025629636659306233}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ParentPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +172,7 @@ GameObject:
   - component: {fileID: 3025629637023455248}
   - component: {fileID: 3025629637023455250}
   - component: {fileID: 3025629637023455251}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SpritePlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

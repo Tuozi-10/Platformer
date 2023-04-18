@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Player
 {
@@ -22,7 +23,9 @@ namespace Player
         private Rigidbody2D m_rigidbody;
         private bool m_canJump = true;
         private bool m_shooting;
-        
+
+        [HideInInspector] public UnityEvent onInteract;
+
         public static PlayerController instance;
         
         private static readonly int Moving = Animator.StringToHash("Moving");
@@ -36,7 +39,10 @@ namespace Player
         [SerializeField] private float m_fullLoadShootDuration = 0.6f;
         [SerializeField] private float m_arrowMinStrength = 15;
         [SerializeField] private float m_arrowMaxStrength = 40;
-        
+
+        [SerializeField] private KeyCode shootingKey;
+        [SerializeField] private KeyCode intercationKey;
+
         private void Awake()
         {
             if (instance != null)
@@ -61,8 +67,13 @@ namespace Player
 
         private void ManageInputs()
         {
-            if (Input.GetKeyDown(KeyCode.A)) Shoot();
-            else if(Input.GetKeyUp(KeyCode.A) && m_shooting) ShootArrow();
+            if (Input.GetKeyDown(shootingKey)) Shoot();
+            else if(Input.GetKeyUp(shootingKey) && m_shooting) ShootArrow();
+
+            if (Input.GetKeyDown(intercationKey))
+            {
+                onInteract?.Invoke();
+            }
 
 
             if (Input.GetKey(KeyCode.Space))
