@@ -1,0 +1,15 @@
+{
+    "name": "com.jcavaillac.utilities",
+    "version": "0.0.22",
+    "displayName": "Utilities",
+    "description": "Collection of utility functions to be used in Unity.",
+    "unity": "2021.3",
+    "author":  "Jcavaillac",
+    "keywords": [
+        "Utilities"
+    ],
+    "dependencies": {
+        "com.unity.addressables": "1.19.19",
+        "com.unity.collections": "1.2.4"
+    }
+  }
