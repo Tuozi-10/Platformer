@@ -3573,11 +3573,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1973001503058916821, guid: f68c13f043e74244b82bc868e7e0135e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.43
+      value: 1.99
       objectReference: {fileID: 0}
     - target: {fileID: 1973001503058916821, guid: f68c13f043e74244b82bc868e7e0135e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.52
+      value: -4.22
       objectReference: {fileID: 0}
     - target: {fileID: 1973001503058916821, guid: f68c13f043e74244b82bc868e7e0135e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3615,6 +3615,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gobelin
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5071333522075774757, guid: f68c13f043e74244b82bc868e7e0135e, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f68c13f043e74244b82bc868e7e0135e, type: 3}
