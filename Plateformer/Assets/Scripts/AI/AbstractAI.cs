@@ -20,8 +20,8 @@ namespace AI
             Follow
         }
 
-        private States m_currentState = States.Idle;
-        
+        protected States CurrentState { get; private set; } = States.Idle;
+
         private void Awake()
         {
             EntityData = m_dataEntity.GetData();
@@ -34,7 +34,7 @@ namespace AI
 
         private void StateMachine()
         {
-            switch (m_currentState)
+            switch (CurrentState)
             {
                 case States.Wander: DoWander(); break;
                 case States.Dead: DoDead(); break;
@@ -45,7 +45,10 @@ namespace AI
             }
         }
 
-        protected virtual void DoWander() { }
+        protected virtual void DoWander()
+        {
+            m_animator.Play("Run");
+        }
 
         protected virtual void DoDead()
         {
@@ -56,8 +59,11 @@ namespace AI
         { 
             m_animator.Play("Idle");
         }
-        
-        protected virtual void DoAttack() { }
+
+        protected virtual void DoAttack()
+        {
+            m_animator.Play("Idle");
+        }
         protected virtual void DoFollow() { }
 
         public void OnHit(int damages)
@@ -77,7 +83,7 @@ namespace AI
         
         public void ChangeState(States newState)
         {
-            m_currentState = newState;
+            CurrentState = newState;
         }
         
     }
