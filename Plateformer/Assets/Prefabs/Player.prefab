@@ -10,11 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3025629635873917124}
   - component: {fileID: 3025629635873917127}
+  - component: {fileID: 7964805085381976201}
   - component: {fileID: 3025629635873917129}
   - component: {fileID: 3025629635873917126}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,6 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.66, y: -4.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3025629636659306233}
   m_Father: {fileID: 0}
@@ -48,9 +50,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_playerAnimator: {fileID: 3025629637023455251}
   m_arrow: {fileID: 3703706128725626221, guid: 5dd50c2d8594bc24ca8c9b5b61d96e11, type: 3}
-  m_speedJump: 150
+  m_speedJumpMax: 10
+  m_speedJumpMin: 10
+  m_jumpBuffer: 0.5
   m_speed: 100
   m_maxSpeed: 5
+  m_fullLoadShootDuration: 0.6
+  m_arrowMinStrength: 15
+  m_arrowMaxStrength: 40
+--- !u!114 &7964805085381976201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3025629635873917125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73fc40c2d540e214b889f08d287a50d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLifePoint: 1
+  invulnerabilityDuration: 0.193
+  LifePointObjects:
+  - {fileID: 0}
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!50 &3025629635873917129
 Rigidbody2D:
   serializedVersion: 4
@@ -124,6 +150,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3025629637023455248}
   m_Father: {fileID: 3025629635873917124}
@@ -157,6 +184,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3025629636659306233}
   m_RootOrder: 0
@@ -172,6 +200,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -214,7 +243,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &3025629637023455251
 Animator:
-  serializedVersion: 3
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -227,7 +256,8 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
