@@ -9,8 +9,8 @@ namespace AI
         [SerializeField] private bool OnlyWhenPlayerNear = true;
         [SerializeField] private float m_distanceChase = 8f;
         [SerializeField] private float m_speed = 3f;
-        [SerializeField]
-        private LayerMask m_layerMask;
+        [SerializeField] private LayerMask m_layerMask;
+        [SerializeField] private BoxCollider2D m_collider;
         
         private Rigidbody2D m_rigidbody;
         private SpriteRenderer m_spriteRenderer;
@@ -53,6 +53,7 @@ namespace AI
             
             m_rigidbody.velocity = new Vector2(m_right ? m_speed : -m_speed, m_rigidbody.velocity.y);
 
+            var hit = Physics2D.BoxCast(transform.position + new Vector3(m_right ? 1 : -1, 0, 0), Vector2.one * .8f, 0f,Vector2.down, 1f, m_layerMask);
             RaycastHit2D rayFloor = Physics2D.Raycast(transform.position + new Vector3( m_right ? 1:-1, 0 ,0), Vector2.down, 1f, m_layerMask);
 
             if (!rayFloor)
@@ -61,9 +62,9 @@ namespace AI
                 m_spriteRenderer.flipX = !m_right;
                 return;
             }
-            
-            RaycastHit2D ray = Physics2D.Raycast(transform.position + Vector3.up *0.5f, m_right ? Vector2.right : Vector2.left, 1.5f, m_layerMask);
-            if (ray.collider != null)
+
+            hit = Physics2D.BoxCast(transform.position + Vector3.up * .5f, Vector2.one * .8f, 0f, m_right ? Vector2.right : Vector2.left, 1.5f, m_layerMask);
+            if (hit.collider != null)
             {
                 m_right = !m_right;
                 m_spriteRenderer.flipX = !m_right;

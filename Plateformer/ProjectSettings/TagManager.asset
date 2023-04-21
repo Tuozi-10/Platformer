@@ -6,6 +6,7 @@ TagManager:
   tags:
   - NoJump
   - Ennemy
+  - Arrow
   layers:
   - Default
   - TransparentFX

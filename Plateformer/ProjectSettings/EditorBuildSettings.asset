@@ -5,15 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Loading.unity
     guid: 542d3637fa961934b84e9a4bff8a93a9
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 89a01f01246ec8241bac5f283bffa17b
+  - enabled: 1
+    path: Assets/Scenes/Level_Exemple-GymRoom.unity
+    guid: da9403aced5fd98468635ed34fe2a719
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 307b11f1fd5777c42bd58724aa18e3f6
